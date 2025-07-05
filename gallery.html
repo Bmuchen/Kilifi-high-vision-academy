@@ -1,0 +1,137 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery – Kilifi High Vision Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://lh3.googleusercontent.com/p/AF1QipMAmMyzxFO-z_nKzYWdyEhL46oPJb2qlCvvCcIR=s1360-w1360-h1020-rw') center center / cover no-repeat fixed;
+      color: white;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+
+    .gallery-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .gallery-section h2 {
+      font-size: 2.2rem;
+      color: #ffeb3b;
+      margin-bottom: 15px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #fff;
+    }
+
+    header.hero {
+      background: rgba(0,0,0,0.5);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer.site-footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.5);
+      color: #ccc;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Gallery – Kilifi High Vision Academy</h1>
+      <p>Snapshots of learning, fun, and school life in Kilifi</p>
+    </div>
+  </header>
+
+  <main class="gallery-section">
+    <h2>Life at Kilifi High Vision</h2>
+    <div class="gallery-grid">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkctUU-UHK2AEBwPppSbm3l_1612FJngNCbg&s" alt="Students 1" />
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkctUU-UHK2AEBwPppSbm3l_1612FJngNCbg&s" alt="Students 2" />
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkctUU-UHK2AEBwPppSbm3l_1612FJngNCbg&s" alt="Students 3" />
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkctUU-UHK2AEBwPppSbm3l_1612FJngNCbg&s" alt="Class Fun" />
+    </div>
+  </main>
+
+  <div id="lightbox">
+    <img src="" alt="Enlarged View" />
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Kilifi High Vision Academy, Kilifi. Designed by [Putu]</p>
+  </footer>
+
+  <script>
+    const galleryImgs = document.querySelectorAll('.gallery-grid img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+
+    galleryImgs.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+    });
+  </script>
+</body>
+</html>
